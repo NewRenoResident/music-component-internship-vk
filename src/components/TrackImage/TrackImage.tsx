@@ -6,16 +6,20 @@ import { Icon20GraphOutline } from "@vkontakte/icons";
 import trackState from "../../store/trackState.ts";
 
 interface ITrackImageProps {
-  img?: ReactElement;
+  img?: string;
 }
 
-function TrackImage({ img: PropImage }: ITrackImageProps) {
+function TrackImage({ img }: ITrackImageProps) {
   return (
     <div
       className={`${styles.trackImageContainer} ${trackState.active ? styles.active : ""}`}
     >
-      {PropImage ? (
-        PropImage
+      {img ? (
+        <Image
+          src={img}
+          style={{ width: "40px", height: "40px" }}
+          alt="track image"
+        />
       ) : (
         <Image
           src={imgMusic}

@@ -1,39 +1,18 @@
 import { Text } from "@vkontakte/vkui";
 import { Icon16MoreVertical } from "@vkontakte/icons";
 import styles from "./TrackTimer.module.css";
-import { useEffect, useLayoutEffect } from "react";
-import { useSecondsCounter } from "../../hooks/useSecondsCounter.tsx";
-import trackState from "../../store/trackState.ts";
 import { observer } from "mobx-react-lite";
+import trackState from "../../store/trackState.ts";
+import { formatSeconds } from "../../utils/formatSeconds.ts";
+import { useTrackTimer } from "../../hooks/useTrackTimer.ts";
 
 interface Props {
+  duration?: number;
   audio?: HTMLAudioElement | null;
 }
 
-const TrackTimer = observer(({ audio }: Props) => {
-  const [seconds, setSeconds] = useSecondsCounter(undefined, "default");
-
-  useLayoutEffect(() => {
-    if (audio) {
-      audio.onloadedmetadata = () => {
-        setSeconds(+audio?.duration.toFixed(0));
-      };
-    }
-  }, [audio]);
-
-  useEffect(() => {
-    let intervalId: number;
-    if (trackState.active) {
-      intervalId = setInterval(() => {
-        if (audio) {
-          setSeconds(+audio.currentTime.toFixed(0));
-        }
-      }, 400);
-    }
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [trackState.active, audio]);
+const TrackTimer = observer(({ audio, duration }: Props) => {
+  useTrackTimer({ audio });
 
   return (
     <div className={styles.trackTimerContainer}>
@@ -46,7 +25,7 @@ const TrackTimer = observer(({ audio }: Props) => {
           textAlign: "right",
         }}
       >
-        {seconds}
+        {trackState.formattedSeconds || formatSeconds(duration || 0)}
       </Text>
       <div className={styles.iconPadding}>
         <Icon16MoreVertical fill="var(--main-bg-color)" />

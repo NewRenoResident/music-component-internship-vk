@@ -9,25 +9,22 @@ const TrackInfo = observer(
   ({ trackTitle = "Трек", artistName = "Исполнитель" }: ITrackInfoProps) => {
     return (
       <div>
-        <Title level="3" className="track-title">
-          {trackTitle}
-        </Title>
+        <Title level="3">{trackTitle}</Title>
         <Headline
           level="2"
-          className="secondary-text-color"
           style={{
+            letterSpacing: 0.39,
             fontSize: "13px",
             fontWeight: 400,
             lineHeight: "16px",
-            letterSpacing: "0.2px",
-            textAlign: "left",
           }}
+          className="secondary-text-color"
         >
           {artistName}
         </Headline>
       </div>
     );
-  },
+  }
 );
 
 export default TrackInfo;
