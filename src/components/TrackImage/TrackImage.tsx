@@ -1,4 +1,3 @@
-import { ReactElement } from "react";
 import imgMusic from "../../assets/img.png";
 import { Image } from "@vkontakte/vkui";
 import styles from "./TrackImage.module.css";

@@ -1,5 +1,5 @@
 import { Cell } from "@vkontakte/vkui";
-import { ReactElement, useEffect } from "react";
+import { useEffect } from "react";
 import TrackImage from "./TrackImage/TrackImage.tsx";
 import TrackTimer from "./TrackTimer/TrackTimer.tsx";
 import TrackInfo from "./TrackInfo/TrackInfo.tsx";
