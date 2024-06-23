@@ -1,0 +1,18 @@
+:root {
+  --main-bg-color: #2688EB;
+  --secondary-text-color: #818C99;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.secondary-text-color{
+  color: var(--secondary-text-color);
+}
+.main-bg-color{
+  color: var(--main-bg-color);
+}

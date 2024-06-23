@@ -1,0 +1,12 @@
+.trackTimerContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+}
+
+
+
+.iconPadding {
+    padding: 12px 2px 12px 14px;
+    fill: var(--main-bg-color);
+}
